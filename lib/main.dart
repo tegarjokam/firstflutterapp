@@ -4,9 +4,27 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var indexPertanyaan = 0;
+
+  void jawabanPertanyaan() {
+    print("Jawaban terpilih");
+    setState(() {
+      indexPertanyaan++;      
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    var pertanyaan = [
+      "Siapa nama presiden pertama negara Indonesia ?",
+      "Apa nama ibu kota Indonesia ?"
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -14,21 +32,21 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("Pertanyaan pertama"),
+            Text(pertanyaan[indexPertanyaan]),
             RaisedButton(
-              onPressed: null,
+              onPressed: jawabanPertanyaan,
               child: Text("jawaban 1"),
             ),
             RaisedButton(
-              onPressed: null,
+              onPressed: jawabanPertanyaan,
               child: Text("jawaban 2"),
             ),
             RaisedButton(
-              onPressed: null,
+              onPressed: jawabanPertanyaan,
               child: Text("jawaban 3"),
             ),
             RaisedButton(
-              onPressed: null,
+              onPressed: jawabanPertanyaan,
               child: Text("jawaban 4"),
             ),
           ],
